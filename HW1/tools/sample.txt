@@ -1,0 +1,6 @@
+curlike - a curl-like HTTP client
+================================
+
+A sample file used by tools/compare_with_curl.py to compare multipart
+uploads against the real curl. Its only job is to exist with a .txt
+extension, which both curl and Python's mimetypes agree maps to text/plain.

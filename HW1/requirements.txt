@@ -1,0 +1,7 @@
+# curlike only needs httpx at runtime.
+httpx>=0.27
+
+# Optional extras (install what you need):
+#   h2      -> enables --http2
+#   brotli  -> enables "br" in Accept-Encoding
+#   zstd    -> enables "zstd" in Accept-Encoding
