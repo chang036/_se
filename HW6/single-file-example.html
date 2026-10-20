@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HW6 · 單檔微服務範例</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid #334155;
+    }
+    header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    header .sub { color: #94a3b8; font-size: 0.95rem; }
+    main { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .card h2 { font-size: 1.1rem; margin-bottom: 1rem; color: #38bdf8; }
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      background: #0f172a;
+      font-size: 0.9rem;
+    }
+    .status .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #64748b;
+    }
+    .status.up .dot { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+    .status.down .dot { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
+    .status code {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      background: #1e293b;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+    }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    button:hover { background: #2563eb; }
+    .actions { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    pre.json, pre.arch {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 0.8rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    form { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    input {
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #e2e8f0;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+    input:focus { outline: none; border-color: #3b82f6; }
+    #name { width: 150px; }
+    #content { flex: 1; min-width: 200px; }
+    .messages { list-style: none; }
+    .messages li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid #334155;
+      font-size: 0.9rem;
+    }
+    .messages li:last-child { border-bottom: none; }
+    .messages .who { font-weight: 600; color: #38bdf8; min-width: 80px; }
+    .messages .when { color: #64748b; font-size: 0.75rem; margin-left: 0.5rem; }
+    .messages .txt { flex: 1; color: #cbd5e1; }
+    .messages button {
+      background: #ef4444;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.75rem;
+    }
+    .messages button:hover { background: #dc2626; }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #64748b;
+      font-size: 0.8rem;
+    }
+    .arch { line-height: 1.6; }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .tab {
+      background: #334155;
+      color: #94a3b8;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .tab.active { background: #3b82f6; color: white; }
+    .code-view {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 0.75rem;
+      overflow-x: auto;
+      max-height: 400px;
+      overflow-y: auto;
+      display: none;
+    }
+    .code-view.active { display: block; }
+    .code-view pre { margin: 0; white-space: pre; }
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+    .badge-node { background: #339933; color: white; }
+    .badge-python { background: #3776ab; color: white; }
+    .badge-rust { background: #dea584; color: #1e293b; }
+    .badge-frontend { background: #f7df1e; color: #1e293b; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HW6 · 單檔微服務範例</h1>
+    <p class="sub">將 node-api、python-api、rust-api、frontend 整合為單一 HTML 檔案</p>
+  </header>
+
+  <main>
+    <!-- 服務狀態 -->
+    <section class="card">
+      <h2>服務狀態</h2>
+      <div class="status-grid">
+        <div class="status" id="st-node"><span class="dot"></span> node-api <code>/api/health</code></div>
+        <div class="status" id="st-python"><span class="dot"></span> python-api <code>/py/health</code></div>
+        <div class="status" id="st-rust"><span class="dot"></span> rust-api <code>/rust/health</code></div>
+      </div>
+      <button id="btn-refresh">重新檢查</button>
+      <pre id="status-json" class="json">…</pre>
+    </section>
+
+    <!-- 留言板 -->
+    <section class="card">
+      <h2>留言板</h2>
+      <form id="msg-form">
+        <input id="name" type="text" placeholder="姓名" maxlength="40" />
+        <input id="content" type="text" placeholder="留言內容" maxlength="500" required />
+        <button type="submit">送出</button>
+      </form>
+      <ul id="msg-list" class="messages"></ul>
+    </section>
+
+    <!-- 跨語言微服務 -->
+    <section class="card">
+      <h2>跨語言微服務</h2>
+      <div class="actions">
+        <button id="btn-py">Python: /py/info</button>
+        <button id="btn-rust">Rust: /rust/fib?n=20</button>
+      </div>
+      <pre id="svc-json" class="json">…</pre>
+    </section>
+
+    <!-- 系統架構 -->
+    <section class="card">
+      <h2>系統架構</h2>
+      <pre class="arch">browser ─▶ nginx :8080 ─┬─▶ /        静態 frontend
+                         ├─▶ /api/*   node-api:3000 ─▶ postgres:5432
+                         ├─▶ /py/*    python-api:8000
+                         └─▶ /rust/*  rust-api:8002</pre>
+    </section>
+
+    <!-- 原始碼展示 -->
+    <section class="card">
+      <h2>原始碼展示</h2>
+      <div class="tabs">
+        <button class="tab active" data-tab="node">Node.js</button>
+        <button class="tab" data-tab="python">Python</button>
+        <button class="tab" data-tab="rust">Rust</button>
+        <button class="tab" data-tab="frontend">Frontend</button>
+      </div>
+      <div class="code-view active" id="view-node">
+        <pre>// node-api/server.js
+const express = require("express");
+const { Pool } = require("pg");
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+const pool = new Pool({
+  host: process.env.PGHOST || "postgres",
+  port: Number(process.env.PGPORT || 5432),
+  user: process.env.PGUSER || "demo",
+  password: process.env.PGPASSWORD || "demo1234",
+  database: process.env.PGDATABASE || "demo",
+  connectionTimeoutMillis: 5000,
+});
+
+app.use(express.json());
+
+app.get("/health", async (_req, res) => {
+  try {
+    const r = await pool.query("SELECT NOW() AS now");
+    res.json({
+      service: "node-api",
+      status: "ok",
+      runtime: `node ${process.version}`,
+      database: "postgresql",
+      dbTime: r.rows[0].now,
+      time: new Date().toISOString(),
+    });
+  } catch (err) {
+    res.status(503).json({ service: "node-api", status: "error", message: err.message });
+  }
+});
+
+app.get("/messages", async (_req, res) => {
+  try {
+    const r = await pool.query(
+      "SELECT id, name, content, created_at FROM messages ORDER BY id DESC LIMIT 100"
+    );
+    res.json(r.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post("/messages", async (req, res) => {
+  const name = String(req.body.name || "").trim().slice(0, 40) || "anonymous";
+  const content = String(req.body.content || "").trim().slice(0, 500);
+  if (!content) {
+    return res.status(400).json({ error: "content is required" });
+  }
+  try {
+    const r = await pool.query(
+      "INSERT INTO messages (name, content) VALUES ($1, $2) RETURNING id, name, content, created_at",
+      [name, content]
+    );
+    res.status(201).json(r.rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.delete("/messages/:id", async (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id)) return res.status(400).json({ error: "invalid id" });
+  try {
+    const r = await pool.query("DELETE FROM messages WHERE id = $1 RETURNING id", [id]);
+    if (r.rowCount === 0) return res.status(404).json({ error: "not found" });
+    res.json({ deleted: r.rows[0].id });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`node-api listening on :${PORT}`);
+});</pre>
+      </div>
+      <div class="code-view" id="view-python">
+        <pre># python-api/app.py
+import os
+import platform
+import socket
+
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+HOSTNAME = socket.gethostname()
+
+
+@app.get("/health")
+def health():
+    return jsonify(
+        service="python-api",
+        status="ok",
+        runtime=f"python {platform.python_version()}",
+        host=HOSTNAME,
+    )
+
+
+@app.get("/info")
+def info():
+    return jsonify(
+        service="python-api",
+        python=platform.python_version(),
+        implementation=platform.python_implementation(),
+        platform=platform.platform(),
+        host=HOSTNAME,
+        cwd=os.getcwd(),
+    )
+
+
+@app.get("/fib")
+def fib():
+    try:
+        n = int(request.args.get("n", "10"))
+    except ValueError:
+        return jsonify(error="n must be an integer"), 400
+    if n < 0 or n > 90:
+        return jsonify(error="n must be between 0 and 90"), 400
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return jsonify(n=n, result=a)
+
+
+@app.get("/")
+def index():
+    return jsonify(service="python-api", endpoints=["/health", "/info", "/fib?n=10"])
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", "8000")))</pre>
+      </div>
+      <div class="code-view" id="view-rust">
+        <pre>// rust-api/src/main.rs
+use axum::{
+    extract::Query,
+    routing::get,
+    Json, Router,
+};
+use serde::Serialize;
+use serde_json::{json, Value};
+use std::collections::HashMap;
+use std::net::SocketAddr;
+
+#[derive(Serialize)]
+struct Health {
+    service: &'static str,
+    status: &'static str,
+    runtime: &'static str,
+}
+
+async fn health() -> Json<Health> {
+    Json(Health {
+        service: "rust-api",
+        status: "ok",
+        runtime: "rust / axum",
+    })
+}
+
+async fn fib(Query(params): Query<HashMap<String, String>>) -> Json<Value> {
+    let n: u64 = params
+        .get("n")
+        .and_then(|v| v.parse().ok())
+        .unwrap_or(20);
+
+    if n > 90 {
+        return Json(json!({ "error": "n must be <= 90" }));
+    }
+
+    let (mut a, mut b): (u128, u128) = (0, 1);
+    for _ in 0..n {
+        let next = a + b;
+        a = b;
+        b = next;
+    }
+
+    Json(json!({ "n": n, "result": a }))
+}
+
+async fn index() -> Json<Value> {
+    Json(json!({
+        "service": "rust-api",
+        "endpoints": ["/health", "/fib?n=20"]
+    }))
+}
+
+#[tokio::main]
+async fn main() {
+    let app = Router::new()
+        .route("/", get(index))
+        .route("/health", get(health))
+        .route("/fib", get(fib));
+
+    let addr = SocketAddr::from(([0, 0, 0, 0], 8002));
+    let listener = tokio::net::TcpListener::bind(addr).await.expect("bind :8002");
+    println!("rust-api listening on {addr}");
+    axum::serve(listener, app).await.expect("server error");
+}</pre>
+      </div>
+      <div class="code-view" id="view-frontend">
+        <pre>// frontend/app.js
+const $ = (id) => document.getElementById(id);
+
+async function getJSON(url, options) {
+  const res = await fetch(url, options);
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || `${res.status} ${res.statusText}`);
+  return data;
+}
+
+async function mark(el, url) {
+  try {
+    const data = await getJSON(url);
+    el.classList.remove("down");
+    el.classList.add("up");
+    return data;
+  } catch (err) {
+    el.classList.remove("up");
+    el.classList.add("down");
+    return { error: err.message };
+  }
+}
+
+async function checkStatus() {
+  const results = await Promise.all([
+    mark($("st-node"), "/api/health"),
+    mark($("st-python"), "/py/health"),
+    mark($("st-rust"), "/rust/health"),
+  ]);
+  $("status-json").textContent = JSON.stringify(
+    { "node-api": results[0], "python-api": results[1], "rust-api": results[2] },
+    null,
+    2
+  );
+}
+
+async function loadMessages() {
+  try {
+    const rows = await getJSON("/api/messages");
+    $("msg-list").innerHTML = rows.length
+      ? rows
+          .map(
+            (m) => `<li>
+              <span class="who">${escapeHtml(m.name)}<span class="when">${new Date(
+              m.created_at
+            ).toLocaleString()}</span></span>
+              <span class="txt">${escapeHtml(m.content)}</span>
+              <button data-id="${m.id}">刪除</button>
+            </li>`
+          )
+          .join("")
+      : '<li><span class="txt">尚無留言</span></li>';
+
+    document.querySelectorAll("#msg-list button").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        await getJSON(`/api/messages/${btn.dataset.id}`, { method: "DELETE" });
+        loadMessages();
+      });
+    });
+  } catch (err) {
+    $("msg-list").innerHTML = `<li><span class="txt">讀取失敗：${escapeHtml(
+      err.message
+    )}</span></li>`;
+  }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(
+    /[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]
+  );
+}
+
+$("msg-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const name = $("name").value.trim();
+  const content = $("content").value.trim();
+  if (!content) return;
+  try {
+    await getJSON("/api/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, content }),
+    });
+    $("content").value = "";
+    loadMessages();
+  } catch (err) {
+    alert("送出失敗：" + err.message);
+  }
+});
+
+$("btn-refresh").addEventListener("click", checkStatus);
+
+async function loadService(url, el) {
+  el.textContent = `loading ${url} …`;
+  try {
+    el.textContent = JSON.stringify(await getJSON(url), null, 2);
+  } catch (err) {
+    el.textContent = `error: ${err.message}`;
+  }
+}
+
+$("btn-py").addEventListener("click", () => loadService("/py/info", $("svc-json")));
+$("btn-rust").addEventListener("click", () =>
+  loadService("/rust/fib?n=20", $("svc-json"))
+);
+
+checkStatus();
+loadMessages();
+setInterval(checkStatus, 15000);</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>HW6 · 單檔整合範例 · 模擬微服務架構</footer>
+
+  <script>
+    // ============================================================
+    // 模擬後端服務（Browser-based Mock Services）
+    // ============================================================
+
+    // --- Mock Database (模擬 PostgreSQL) ---
+    const mockDB = {
+      messages: [
+        { id: 1, name: "張程翔", content: "這是第一則留言", created_at: new Date().toISOString() },
+        { id: 2, name: "陳鍾誠", content: "微服務架構很有趣！", created_at: new Date().toISOString() },
+      ],
+      nextId: 3,
+    };
+
+    // --- Mock Node.js API (模擬 /api/*) ---
+    const mockNodeAPI = {
+      async getHealth() {
+        return {
+          service: "node-api",
+          status: "ok",
+          runtime: `node ${"v20.0.0"} (simulated)`,
+          database: "postgresql",
+          dbTime: new Date().toISOString(),
+          time: new Date().toISOString(),
+        };
+      },
+      async getMessages() {
+        return mockDB.messages;
+      },
+      async postMessage(name, content) {
+        const msg = {
+          id: mockDB.nextId++,
+          name: name || "anonymous",
+          content,
+          created_at: new Date().toISOString(),
+        };
+        mockDB.messages.unshift(msg);
+        return msg;
+      },
+      async deleteMessage(id) {
+        const idx = mockDB.messages.findIndex((m) => m.id === id);
+        if (idx === -1) throw new Error("not found");
+        mockDB.messages.splice(idx, 1);
+        return { deleted: id };
+      },
+    };
+
+    // --- Mock Python API (模擬 /py/*) ---
+    const mockPythonAPI = {
+      async getHealth() {
+        return {
+          service: "python-api",
+          status: "ok",
+          runtime: `python ${"3.12.0"} (simulated)`,
+          host: "mock-container",
+        };
+      },
+      async getInfo() {
+        return {
+          service: "python-api",
+          python: "3.12.0",
+          implementation: "CPython",
+          platform: "Linux (simulated)",
+          host: "mock-container",
+          cwd: "/app",
+        };
+      },
+      async getFib(n = 10) {
+        n = parseInt(n);
+        if (isNaN(n)) throw new Error("n must be an integer");
+        if (n < 0 || n > 90) throw new Error("n must be between 0 and 90");
+        let a = 0n, b = 1n;
+        for (let i = 0; i < n; i++) [a, b] = [b, a + b];
+        return { n, result: a.toString() };
+      },
+    };
+
+    // --- Mock Rust API (模擬 /rust/*) ---
+    const mockRustAPI = {
+      async getHealth() {
+        return {
+          service: "rust-api",
+          status: "ok",
+          runtime: "rust / axum (simulated)",
+        };
+      },
+      async getFib(n = 20) {
+        n = parseInt(n);
+        if (isNaN(n)) throw new Error("n must be an integer");
+        if (n > 90) throw new Error("n must be <= 90");
+        let a = 0n, b = 1n;
+        for (let i = 0; i < n; i++) [a, b] = [b, a + b];
+        return { n, result: a.toString() };
+      },
+    };
+
+    // --- Mock Router (模擬 Nginx 反向代理) ---
+    const mockRouter = {
+      async handle(path) {
+        if (path === "/api/health") return mockNodeAPI.getHealth();
+        if (path === "/api/messages") return mockNodeAPI.getMessages();
+        if (path === "/py/health") return mockPythonAPI.getHealth();
+        if (path === "/py/info") return mockPythonAPI.getInfo();
+        if (path.startsWith("/py/fib")) {
+          const n = new URLSearchParams(path.split("?")[1]).get("n");
+          return mockPythonAPI.getFib(n);
+        }
+        if (path === "/rust/health") return mockRustAPI.getHealth();
+        if (path.startsWith("/rust/fib")) {
+          const n = new URLSearchParams(path.split("?")[1]).get("n");
+          return mockRustAPI.getFib(n);
+        }
+        throw new Error("Not Found");
+      },
+    };
+
+    // ============================================================
+    // Frontend Logic (整合自 frontend/app.js)
+    // ============================================================
+
+    const $ = (id) => document.getElementById(id);
+
+    async function getJSON(url, options) {
+      // 模擬網路延遲
+      await new Promise((r) => setTimeout(r, 100 + Math.random() * 200));
+      if (options && options.method === "POST") {
+        const body = JSON.parse(options.body);
+        return mockNodeAPI.postMessage(body.name, body.content);
+      }
+      if (options && options.method === "DELETE") {
+        const id = parseInt(url.split("/").pop());
+        return mockNodeAPI.deleteMessage(id);
+      }
+      return mockRouter.handle(url);
+    }
+
+    async function mark(el, url) {
+      try {
+        const data = await getJSON(url);
+        el.classList.remove("down");
+        el.classList.add("up");
+        return data;
+      } catch (err) {
+        el.classList.remove("up");
+        el.classList.add("down");
+        return { error: err.message };
+      }
+    }
+
+    async function checkStatus() {
+      const results = await Promise.all([
+        mark($("st-node"), "/api/health"),
+        mark($("st-python"), "/py/health"),
+        mark($("st-rust"), "/rust/health"),
+      ]);
+      $("status-json").textContent = JSON.stringify(
+        { "node-api": results[0], "python-api": results[1], "rust-api": results[2] },
+        null,
+        2
+      );
+    }
+
+    async function loadMessages() {
+      try {
+        const rows = await getJSON("/api/messages");
+        $("msg-list").innerHTML = rows.length
+          ? rows
+              .map(
+                (m) => `<li>
+                  <span class="who">${escapeHtml(m.name)}<span class="when">${new Date(
+                  m.created_at
+                ).toLocaleString()}</span></span>
+                  <span class="txt">${escapeHtml(m.content)}</span>
+                  <button data-id="${m.id}">刪除</button>
+                </li>`
+              )
+              .join("")
+          : '<li><span class="txt">尚無留言</span></li>';
+
+        document.querySelectorAll("#msg-list button").forEach((btn) => {
+          btn.addEventListener("click", async () => {
+            await getJSON(`/api/messages/${btn.dataset.id}`, { method: "DELETE" });
+            loadMessages();
+          });
+        });
+      } catch (err) {
+        $("msg-list").innerHTML = `<li><span class="txt">讀取失敗：${escapeHtml(
+          err.message
+        )}</span></li>`;
+      }
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(
+        /[&<>"']/g,
+        (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]
+      );
+    }
+
+    $("msg-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = $("name").value.trim();
+      const content = $("content").value.trim();
+      if (!content) return;
+      try {
+        await getJSON("/api/messages", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, content }),
+        });
+        $("content").value = "";
+        loadMessages();
+      } catch (err) {
+        alert("送出失敗：" + err.message);
+      }
+    });
+
+    $("btn-refresh").addEventListener("click", checkStatus);
+
+    async function loadService(url, el) {
+      el.textContent = `loading ${url} …`;
+      try {
+        el.textContent = JSON.stringify(await getJSON(url), null, 2);
+      } catch (err) {
+        el.textContent = `error: ${err.message}`;
+      }
+    }
+
+    $("btn-py").addEventListener("click", () => loadService("/py/info", $("svc-json")));
+    $("btn-rust").addEventListener("click", () =>
+      loadService("/rust/fib?n=20", $("svc-json"))
+    );
+
+    // Tab switching
+    document.querySelectorAll(".tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+        document.querySelectorAll(".code-view").forEach((v) => v.classList.remove("active"));
+        tab.classList.add("active");
+        $(`view-${tab.dataset.tab}`).classList.add("active");
+      });
+    });
+
+    // Initialize
+    checkStatus();
+    loadMessages();
+    setInterval(checkStatus, 15000);
+  </script>
+</body>
+</html>

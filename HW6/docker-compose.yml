@@ -1,0 +1,99 @@
+version: "3.9"
+
+services:
+  # ============================================
+  # Nginx - Reverse Proxy + Web Server
+  # ============================================
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - api-python
+      - api-rust
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # ============================================
+  # Frontend - Node.js + Express
+  # ============================================
+  frontend:
+    build: ./frontend
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=microservices
+      - DB_USER=admin
+      - DB_PASSWORD=secret123
+      - PYTHON_API_URL=http://api-python:8000
+      - RUST_API_URL=http://api-rust:8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # ============================================
+  # Python API - FastAPI
+  # ============================================
+  api-python:
+    build: ./api-python
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=microservices
+      - DB_USER=admin
+      - DB_PASSWORD=secret123
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # ============================================
+  # Rust API - Actix Web
+  # ============================================
+  api-rust:
+    build: ./api-rust
+    environment:
+      - DATABASE_URL=postgres://admin:secret123@postgres:5432/microservices
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # ============================================
+  # PostgreSQL - Database
+  # ============================================
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_DB=microservices
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=secret123
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d microservices"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Microservices Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); padding: 2rem; text-align: center; border-bottom: 1px solid #334155; }
+        .header h1 { font-size: 2rem; color: #38bdf8; }
+        .header p { color: #94a3b8; margin-top: 0.5rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; transition: transform 0.2s, border-color 0.2s; }
+        .card:hover { transform: translateY(-2px); border-color: #38bdf8; }
+        .card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+        .card-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+        .card h3 { font-size: 1.1rem; color: #f1f5f9; }
+        .card .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+        .badge-green { background: #064e3b; color: #34d399; }
+        .badge-blue { background: #1e3a5f; color: #38bdf8; }
+        .badge-yellow { background: #451a03; color: #fbbf24; }
+        .badge-purple { background: #2e1065; color: #a78bfa; }
+        .card p { color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.75rem; }
+        .card .port { font-family: monospace; background: #0f172a; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; color: #38bdf8; }
+        .btn { display: inline-block; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; transition: background 0.2s; text-decoration: none; }
+        .btn-primary { background: #2563eb; color: white; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-success { background: #059669; color: white; }
+        .btn-success:hover { background: #047857; }
+        .section { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .section h2 { color: #38bdf8; margin-bottom: 1rem; font-size: 1.25rem; }
+        .logs { max-height: 300px; overflow-y: auto; font-family: monospace; font-size: 0.8rem; }
+        .log-entry { padding: 0.5rem; border-bottom: 1px solid #334155; }
+        .log-entry:last-child { border-bottom: none; }
+        .log-time { color: #64748b; }
+        .log-service { color: #38bdf8; font-weight: 600; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .status-online { background: #34d399; box-shadow: 0 0 8px #34d399; }
+        .status-offline { background: #ef4444; }
+        .architecture { text-align: center; padding: 2rem; background: #0f172a; border-radius: 8px; margin-bottom: 2rem; }
+        .architecture pre { text-align: left; font-size: 0.8rem; color: #94a3b8; line-height: 1.6; }
+        .refresh-btn { float: right; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #334155; }
+        th { color: #38bdf8; font-weight: 600; }
+        .loading { color: #64748b; font-style: italic; }
+        .error { color: #ef4444; }
+        .success { color: #34d399; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🐳 Docker Microservices Dashboard</h1>
+        <p>Nginx + PostgreSQL + Node.js + Python (FastAPI) + Rust (Actix Web)</p>
+    </div>
+    <div class="container">
+        <div class="architecture">
+<pre>
+    ┌─────────────────────────────────────────────────────────┐
+    │                      Client (Browser)                    │
+    └──────────────────────────┬──────────────────────────────┘
+                               │
+                    ┌──────────▼──────────┐
+                    │   Nginx (Port 80)   │
+                    │  Reverse Proxy      │
+                    └──────────┬──────────┘
+                               │
+          ┌────────────────────┼────────────────────┐
+          │                    │                    │
+   ┌──────▼──────┐    ┌───────▼───────┐    ┌──────▼──────┐
+   │  Frontend   │    │  Python API   │    │  Rust API   │
+   │  Node.js    │    │  FastAPI      │    │  Actix Web  │
+   │  (Port 3000)│    │  (Port 8000)  │    │  (Port 8080)│
+   └──────┬──────┘    └───────┬───────┘    └──────┬──────┘
+          │                    │                    │
+          └────────────────────┼────────────────────┘
+                               │
+                    ┌──────────▼──────────┐
+                    │    PostgreSQL       │
+                    │    (Port 5432)      │
+                    └─────────────────────┘
+</pre>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: #064e3b;">🌐</div>
+                    <div>
+                        <h3>Nginx</h3>
+                        <span class="badge badge-green">Running</span>
+                    </div>
+                </div>
+                <p>反向代理 + Web 伺服器，統一入口 port 80</p>
+                <p>Port: <span class="port">80</span></p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: #1e3a5f;">📄</div>
+                    <div>
+                        <h3>Frontend (Node.js)</h3>
+                        <span class="badge badge-green" id="frontend-status">Checking...</span>
+                    </div>
+                </div>
+                <p>Express 前端儀表板，提供 Web 介面</p>
+                <p>Port: <span class="port">3000</span></p>
+                <button class="btn btn-primary" onclick="testFrontend()">測試連接</button>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: #2e1065;">🐍</div>
+                    <div>
+                        <h3>Python API</h3>
+                        <span class="badge badge-green" id="python-status">Checking...</span>
+                    </div>
+                </div>
+                <p>FastAPI 後端 API 服務</p>
+                <p>Port: <span class="port">8000</span></p>
+                <button class="btn btn-primary" onclick="testPython()">測試連接</button>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: #451a03;">🦀</div>
+                    <div>
+                        <h3>Rust API</h3>
+                        <span class="badge badge-green" id="rust-status">Checking...</span>
+                    </div>
+                </div>
+                <p>Actix Web 高效能後端 API 服務</p>
+                <p>Port: <span class="port">8080</span></p>
+                <button class="btn btn-primary" onclick="testRust()">測試連接</button>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: #1e3a5f;">🐘</div>
+                    <div>
+                        <h3>PostgreSQL</h3>
+                        <span class="badge badge-green" id="db-status">Checking...</span>
+                    </div>
+                </div>
+                <p>關聯式資料庫，儲存訪問日誌</p>
+                <p>Port: <span class="port">5432</span></p>
+                <button class="btn btn-success" onclick="loadVisits()">查看紀錄</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h2>📋 訪問日誌 (Visit Logs)</h2>
+                <button class="btn btn-primary refresh-btn" onclick="loadVisits()">🔄 重新整理</button>
+            </div>
+            <div id="visits-container">
+                <p class="loading">載入中...</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔌 API 測試結果</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Status</th>
+                        <th>Response</th>
+                    </tr>
+                </thead>
+                <tbody id="api-results">
+                    <tr>
+                        <td colspan="3" class="loading">點擊上方按鈕測試各服務...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const apiResults = [];
+
+        async function testService(name, url) {
+            const row = { name, status: '...', response: '...' };
+            apiResults.push(row);
+            updateTable();
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                row.status = '✅ OK';
+                row.response = JSON.stringify(data).substring(0, 120);
+            } catch (e) {
+                row.status = '❌ Error';
+                row.response = e.message;
+            }
+            updateTable();
+        }
+
+        function updateTable() {
+            const tbody = document.getElementById('api-results');
+            if (apiResults.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="3" class="loading">點擊上方按鈕測試各服務...</td></tr>';
+                return;
+            }
+            tbody.innerHTML = apiResults.map(r => `
+                <tr>
+                    <td>${r.name}</td>
+                    <td>${r.status}</td>
+                    <td style="font-family: monospace; font-size: 0.75rem;">${r.response}</td>
+                </tr>
+            `).join('');
+        }
+
+        async function testFrontend() {
+            testService('Frontend (Node.js)', '/api/status');
+        }
+
+        async function testPython() {
+            testService('Python API', '/api/python/');
+        }
+
+        async function testRust() {
+            testService('Rust API', '/api/rust/');
+        }
+
+        async function loadVisits() {
+            const container = document.getElementById('visits-container');
+            container.innerHTML = '<p class="loading">載入中...</p>';
+            try {
+                const res = await fetch('/api/db/visits');
+                const data = await res.json();
+                if (data.visits && data.visits.length > 0) {
+                    container.innerHTML = '<div class="logs">' + data.visits.map(v => `
+                        <div class="log-entry">
+                            <span class="log-time">${v.created_at}</span>
+                            <span class="log-service">[${v.service}]</span>
+                            <span>${v.message}</span>
+                        </div>
+                    `).join('') + '</div>';
+                } else {
+                    container.innerHTML = '<p class="loading">尚無訪問紀錄</p>';
+                }
+            } catch (e) {
+                container.innerHTML = `<p class="error">載入失敗: ${e.message}</p>`;
+            }
+        }
+
+        // Auto-refresh every 10 seconds
+        setInterval(() => {
+            loadVisits();
+        }, 10000);
+
+        // Initial load
+        loadVisits();
+    </script>
+</body>
+</html>
