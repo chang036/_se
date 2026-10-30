@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>安心操作助理－長輩的 3C 小幫手</title>
+  <meta
+    name="description"
+    content="給長輩的手機、電腦與智慧手錶操作助理：大字、大按鈕、語音唸步驟，還能一鍵打給家人。可加到主畫面，離線也能使用。"
+  />
+  <meta name="theme-color" content="#111111" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="安心助理" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+
+  <p class="offline-banner" id="offlineBanner" role="status" hidden>
+    📴 目前沒有網路，已經存好的教學還是可以看。
+  </p>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">🤝</span>
+      <div class="brand-text">
+        <h1>安心操作助理</h1>
+        <p class="subtitle">手機、電腦、智慧手錶，一步一步教您</p>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="font-switch" id="fontSwitch" role="group" aria-label="字級大小設定">
+        <span class="font-switch-text">字級</span>
+        <button type="button" class="font-btn" data-size="small">Ａ小</button>
+        <button type="button" class="font-btn" data-size="medium">Ａ中</button>
+        <button type="button" class="font-btn" data-size="large">Ａ大</button>
+      </div>
+      <button type="button" class="tool-btn" id="voiceToggle" aria-pressed="true">
+        🔊 自動朗讀：開
+      </button>
+      <button type="button" class="tool-btn" id="settingsBtn">⚙️ 設定</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ==================== 快速求助 ==================== -->
+    <section class="quick-help" aria-labelledby="quickHelpTitle">
+      <div class="section-head">
+        <h2 id="quickHelpTitle">需要幫忙嗎？</h2>
+        <p class="lead">按一下大按鈕，就能打給家人或緊急單位。</p>
+      </div>
+
+      <div class="family-actions" id="familyActions"></div>
+
+      <div class="emergency-block">
+        <h3 class="emergency-title">🚨 緊急電話</h3>
+        <div class="emergency-actions" id="emergencyActions"></div>
+        <p class="emergency-note">撥打前請先確認號碼；110、119、112 會再問您一次。</p>
+      </div>
+    </section>
+
+    <!-- ==================== 上次看的教學 ==================== -->
+    <section class="resume-card" id="resumeCard" aria-label="上次看的教學" hidden></section>
+
+    <!-- ==================== 分類與教學 ==================== -->
+    <nav class="category-nav" id="categoryNav" aria-label="教學分類"></nav>
+    <div id="categorySections"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-saved">🔒 家人的電話只存在這台裝置，不會上傳到網路。</p>
+    <button type="button" class="install-btn" id="installBtn">📲 加到手機主畫面</button>
+    <p class="footer-help">需要更多協助時，請找家人或專業人士協助。</p>
+  </footer>
+
+  <button type="button" class="to-top" id="toTop" aria-label="回到頂端">↑</button>
+
+  <p class="toast" id="toast" role="status" aria-live="polite" hidden></p>
+
+  <!-- ==================== 設定視窗 ==================== -->
+  <dialog id="setupDialog" class="sheet" aria-labelledby="setupTitle">
+    <div class="sheet-inner">
+      <div class="sheet-head">
+        <h2 id="setupTitle">設定家人的電話</h2>
+        <button type="button" class="sheet-close" id="setupClose" aria-label="關閉設定">✕</button>
+      </div>
+      <p class="sheet-lead">
+        請家人幫您輸入。資料只會存在這台裝置，不會上傳到網路。
+      </p>
+
+      <div class="contact-rows" id="contactRows"></div>
+      <button type="button" class="add-contact" id="addContact">＋ 增加一位家人</button>
+
+      <div class="setting-row">
+        <label class="check-row" for="voiceCheckbox">
+          <input type="checkbox" id="voiceCheckbox" />
+          <span>一步一步教學時，自動唸出步驟</span>
+        </label>
+      </div>
+
+      <div class="sheet-actions">
+        <button type="button" class="btn-primary" id="saveSetup">儲存</button>
+        <button type="button" class="btn-ghost" id="clearContacts">清除家人資料</button>
+      </div>
+      <p class="sheet-status" id="setupStatus" role="status" aria-live="polite"></p>
+
+      <div class="install-help">
+        <p><strong>想在手機主畫面看到這個網站嗎？</strong></p>
+        <p>加到主畫面後，打開就像一個 App，沒有網路也能看教學。</p>
+        <button type="button" class="btn-link" id="installHelpBtn">📲 看加入主畫面的方法</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ==================== 一步一步教學 ==================== -->
+  <dialog id="guideDialog" class="guide-dialog" aria-labelledby="guideTask guideText">
+    <div class="guide-panel">
+      <header class="guide-top">
+        <p class="guide-progress" id="guideProgress">第 1 步</p>
+        <button type="button" class="guide-close" id="guideClose">✕ 結束</button>
+      </header>
+
+      <div class="guide-track" aria-hidden="true">
+        <span id="guideBar"></span>
+      </div>
+
+      <div class="guide-body" aria-live="polite" aria-atomic="true">
+        <p class="guide-task" id="guideTask"></p>
+        <p class="guide-icon" id="guideIcon" aria-hidden="true"></p>
+        <h2 class="guide-text" id="guideText" tabindex="-1"></h2>
+      </div>
+
+      <p class="guide-status" id="guideStatus" role="status" aria-live="polite"></p>
+
+      <div class="guide-actions">
+        <button type="button" class="guide-btn" id="guidePrev">← 上一步</button>
+        <button type="button" class="guide-btn guide-speak" id="guideSpeak">🔊 再聽一次</button>
+        <button type="button" class="guide-btn guide-next" id="guideNext">下一步 →</button>
+        <button type="button" class="guide-btn guide-restart" id="guideRestart" hidden>
+          再練習一次
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ==================== 撥號確認 ==================== -->
+  <dialog id="callDialog" class="confirm-dialog" aria-labelledby="callDialogTitle">
+    <div class="confirm-inner">
+      <p class="confirm-icon" id="callDialogIcon" aria-hidden="true">📞</p>
+      <h2 id="callDialogTitle">要撥打這個電話嗎？</h2>
+      <p class="confirm-text" id="callDialogText"></p>
+      <div class="confirm-actions">
+        <button type="button" class="confirm-call" id="callConfirm">📞 現在撥打</button>
+        <button type="button" class="confirm-cancel" id="callCancel">先不要</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ==================== 加到主畫面說明 ==================== -->
+  <dialog id="installDialog" class="sheet install-sheet" aria-labelledby="installTitle">
+    <div class="sheet-inner">
+      <div class="sheet-head">
+        <h2 id="installTitle">加到手機主畫面</h2>
+        <button type="button" class="sheet-close" id="installClose" aria-label="關閉說明">✕</button>
+      </div>
+      <p class="sheet-lead">
+        加到主畫面後，桌面會有圖示，打開就像一個 App，沒有網路也能看教學。
+      </p>
+      <ol class="install-steps">
+        <li>
+          <strong>iPhone / iPad：</strong>用 Safari 打開這個網站 → 按下面的「分享」⬆️
+          → 選「加入主畫面」→ 按「新增」。
+        </li>
+        <li>
+          <strong>Android：</strong>用 Chrome 打開 → 按右上角三個點 → 選「安裝應用程式」或「加到主畫面」。
+        </li>
+        <li>
+          <strong>電腦：</strong>看網址列右邊有沒有安裝圖示，或從瀏覽器選單選「安裝」。
+        </li>
+      </ol>
+      <button type="button" class="btn-primary" id="installDone">我知道了</button>
+    </div>
+  </dialog>
+
+  <noscript>
+    <div class="noscript">
+      <p>這個網站需要開啟 JavaScript 才能使用。</p>
+      <p>請在瀏覽器設定中開啟，或請家人協助。</p>
+    </div>
+  </noscript>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

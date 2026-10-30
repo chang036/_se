@@ -1,0 +1,7 @@
+cloudflared.exe
+__pycache/
+*.pyc
+.env
+.env.*
+.DS_Store
+Thumbs.db
