@@ -1,0 +1,16 @@
+{
+  "name": "nqu-campus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "金門大學風格校務行政系統示範專案（Student / Teacher / Admin）",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test",
+    "reset": "node scripts/reset.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

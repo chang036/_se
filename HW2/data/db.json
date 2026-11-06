@@ -1,0 +1,1514 @@
+{
+  "meta": {
+    "schoolName": "國立金門大學",
+    "systemName": "校務行政系統",
+    "shortName": "NQU Campus",
+    "semester": "115學年度第1學期",
+    "semesterStart": "2026-09-14",
+    "semesterEnd": "2027-01-08",
+    "version": "1.0.0",
+    "departments": [
+      "資訊工程學系",
+      "企業管理學系",
+      "觀光管理學系",
+      "護理學系",
+      "華語文學系",
+      "應用英語學系",
+      "建築學系",
+      "食品科學系",
+      "通識教育中心",
+      "體育室"
+    ],
+    "periods": [
+      {
+        "no": 1,
+        "time": "08:10–09:00"
+      },
+      {
+        "no": 2,
+        "time": "09:10–10:00"
+      },
+      {
+        "no": 3,
+        "time": "10:10–11:00"
+      },
+      {
+        "no": 4,
+        "time": "11:10–12:00"
+      },
+      {
+        "no": 5,
+        "time": "13:10–14:00"
+      },
+      {
+        "no": 6,
+        "time": "14:10–15:00"
+      },
+      {
+        "no": 7,
+        "time": "15:10–16:00"
+      },
+      {
+        "no": 8,
+        "time": "16:10–17:00"
+      },
+      {
+        "no": 9,
+        "time": "17:10–18:00"
+      },
+      {
+        "no": 10,
+        "time": "18:30–19:20"
+      },
+      {
+        "no": 11,
+        "time": "19:25–20:15"
+      },
+      {
+        "no": 12,
+        "time": "20:20–21:10"
+      }
+    ]
+  },
+  "users": [
+    {
+      "id": "U1001",
+      "username": "t1001",
+      "role": "teacher",
+      "name": "王世豪",
+      "title": "副教授",
+      "dept": "資訊工程學系",
+      "email": "shwang@nqu.edu.tw",
+      "phone": "082-313-501",
+      "office": "理工大樓 E512",
+      "employeeNo": "T1001",
+      "color": "#2f6b9a",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831"
+    },
+    {
+      "id": "U1002",
+      "username": "t1002",
+      "role": "teacher",
+      "name": "李雅雯",
+      "title": "助理教授",
+      "dept": "企業管理學系",
+      "email": "ywlee@nqu.edu.tw",
+      "phone": "082-313-502",
+      "office": "管理大樓 A305",
+      "employeeNo": "T1002",
+      "color": "#8a5a9e",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831"
+    },
+    {
+      "id": "U1003",
+      "username": "t1003",
+      "role": "teacher",
+      "name": "陳志明",
+      "title": "教授",
+      "dept": "觀光管理學系",
+      "email": "cmchen@nqu.edu.tw",
+      "phone": "082-313-503",
+      "office": "管理大樓 B412",
+      "employeeNo": "T1003",
+      "color": "#b5762c",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831"
+    },
+    {
+      "id": "U1004",
+      "username": "t1004",
+      "role": "teacher",
+      "name": "張美玲",
+      "title": "講師",
+      "dept": "護理學系",
+      "email": "mlchang@nqu.edu.tw",
+      "phone": "082-313-504",
+      "office": "健康大樓 C208",
+      "employeeNo": "T1004",
+      "color": "#b0506e",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831"
+    },
+    {
+      "id": "U1005",
+      "username": "t1005",
+      "role": "teacher",
+      "name": "林俊宏",
+      "title": "副教授",
+      "dept": "資訊工程學系",
+      "email": "jhline@nqu.edu.tw",
+      "phone": "082-313-505",
+      "office": "理工大樓 E508",
+      "employeeNo": "T1005",
+      "color": "#2b7a78",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831"
+    },
+    {
+      "id": "U1006",
+      "username": "t1006",
+      "role": "teacher",
+      "name": "李淑芬",
+      "title": "講師",
+      "dept": "華語文學系",
+      "email": "sflee@nqu.edu.tw",
+      "phone": "082-313-506",
+      "office": "人文大樓 H210",
+      "employeeNo": "T1006",
+      "color": "#6b7a3a",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831"
+    },
+    {
+      "id": "U1007",
+      "username": "t1007",
+      "role": "teacher",
+      "name": "郭建宏",
+      "title": "助理教授",
+      "dept": "通識教育中心",
+      "email": "jhkuo@nqu.edu.tw",
+      "phone": "082-313-507",
+      "office": "綜合大樓 R316",
+      "employeeNo": "T1007",
+      "color": "#5a6b8a",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831"
+    },
+    {
+      "id": "U1008",
+      "username": "t1008",
+      "role": "teacher",
+      "name": "鄭凱文",
+      "title": "講師",
+      "dept": "體育室",
+      "email": "kwcheng@nqu.edu.tw",
+      "phone": "082-313-508",
+      "office": "體育館 G101",
+      "employeeNo": "T1008",
+      "color": "#3f7a55",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831"
+    },
+    {
+      "id": "S11301001",
+      "username": "s11301001",
+      "role": "student",
+      "name": "陳品妤",
+      "dept": "資訊工程學系",
+      "grade": 2,
+      "className": "資工二A",
+      "studentNo": "11301001",
+      "enrollYear": 113,
+      "email": "s11301001@nqu.edu.tw",
+      "phone": "0912-345-678",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#2f6b9a",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001",
+      "dorm": "女一舍 302-2"
+    },
+    {
+      "id": "S11301002",
+      "username": "s11301002",
+      "role": "student",
+      "name": "林冠宇",
+      "dept": "資訊工程學系",
+      "grade": 3,
+      "className": "資工三A",
+      "studentNo": "11301002",
+      "enrollYear": 112,
+      "email": "s11301002@nqu.edu.tw",
+      "phone": "0922-456-789",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#2b7a78",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001",
+      "dorm": "男二舍 415-1"
+    },
+    {
+      "id": "S11301006",
+      "username": "s11301006",
+      "role": "student",
+      "name": "張家豪",
+      "dept": "資訊工程學系",
+      "grade": 3,
+      "className": "資工三A",
+      "studentNo": "11301006",
+      "enrollYear": 112,
+      "email": "s11301006@nqu.edu.tw",
+      "phone": "0912-000-000",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#5a6b8a",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001"
+    },
+    {
+      "id": "S11301007",
+      "username": "s11301007",
+      "role": "student",
+      "name": "李欣穎",
+      "dept": "資訊工程學系",
+      "grade": 2,
+      "className": "資工二A",
+      "studentNo": "11301007",
+      "enrollYear": 113,
+      "email": "s11301007@nqu.edu.tw",
+      "phone": "0912-000-000",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#b0506e",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001"
+    },
+    {
+      "id": "S11301008",
+      "username": "s11301008",
+      "role": "student",
+      "name": "周柏翰",
+      "dept": "資訊工程學系",
+      "grade": 2,
+      "className": "資工二A",
+      "studentNo": "11301008",
+      "enrollYear": 113,
+      "email": "s11301008@nqu.edu.tw",
+      "phone": "0912-000-000",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#7a6a4a",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001"
+    },
+    {
+      "id": "S11301012",
+      "username": "s11301012",
+      "role": "student",
+      "name": "徐立翔",
+      "dept": "資訊工程學系",
+      "grade": 4,
+      "className": "資工四A",
+      "studentNo": "11301012",
+      "enrollYear": 111,
+      "email": "s11301012@nqu.edu.tw",
+      "phone": "0912-000-000",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#3f7a55",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001"
+    },
+    {
+      "id": "S11301013",
+      "username": "s11301013",
+      "role": "student",
+      "name": "高語彤",
+      "dept": "資訊工程學系",
+      "grade": 2,
+      "className": "資工二A",
+      "studentNo": "11301013",
+      "enrollYear": 113,
+      "email": "s11301013@nqu.edu.tw",
+      "phone": "0912-000-000",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#8a5a9e",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001"
+    },
+    {
+      "id": "S11302003",
+      "username": "s11302003",
+      "role": "student",
+      "name": "黃詩涵",
+      "dept": "企業管理學系",
+      "grade": 2,
+      "className": "企管二A",
+      "studentNo": "11302003",
+      "enrollYear": 113,
+      "email": "s11302003@nqu.edu.tw",
+      "phone": "0912-000-000",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#b5762c",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001"
+    },
+    {
+      "id": "S11302009",
+      "username": "s11302009",
+      "role": "student",
+      "name": "蔡宜蓁",
+      "dept": "企業管理學系",
+      "grade": 2,
+      "className": "企管二A",
+      "studentNo": "11302009",
+      "enrollYear": 113,
+      "email": "s11302009@nqu.edu.tw",
+      "phone": "0912-000-000",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#b0506e",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001"
+    },
+    {
+      "id": "S11303004",
+      "username": "s11303004",
+      "role": "student",
+      "name": "吳承恩",
+      "dept": "觀光管理學系",
+      "grade": 1,
+      "className": "觀光一A",
+      "studentNo": "11303004",
+      "enrollYear": 114,
+      "email": "s11303004@nqu.edu.tw",
+      "phone": "0912-000-000",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#2b7a78",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001"
+    },
+    {
+      "id": "S11204005",
+      "username": "s11204005",
+      "role": "student",
+      "name": "許雅婷",
+      "dept": "護理學系",
+      "grade": 2,
+      "className": "護理二A",
+      "studentNo": "11204005",
+      "enrollYear": 113,
+      "email": "s11204005@nqu.edu.tw",
+      "phone": "0912-000-000",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#8a5a9e",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001"
+    },
+    {
+      "id": "S11204011",
+      "username": "s11204011",
+      "role": "student",
+      "name": "楊晴",
+      "dept": "護理學系",
+      "grade": 2,
+      "className": "護理二A",
+      "studentNo": "11204011",
+      "enrollYear": 113,
+      "email": "s11204011@nqu.edu.tw",
+      "phone": "0912-000-000",
+      "address": "金門縣金寧鄉大學路1號",
+      "color": "#b5762c",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831",
+      "emergencyContact": "家長 0912-000-001"
+    },
+    {
+      "id": "U9001",
+      "username": "admin",
+      "role": "admin",
+      "name": "林美華",
+      "title": "教務處管理員",
+      "dept": "教務處",
+      "email": "registrar@nqu.edu.tw",
+      "phone": "082-313-100",
+      "office": "行政大樓 2F",
+      "employeeNo": "A9001",
+      "color": "#123a63",
+      "password": "7e670ee333da34096fa228861b9fe411:de6793d8b64eb905def07458c783f7d8be21fa0aaa82dcc8a1feb0a09c5f58e47d76f6ac2d3b9328483d38ace9863137b94f1c67f4e22173b879b63b3c6d8831"
+    }
+  ],
+  "courses": [
+    {
+      "id": "C001",
+      "code": "CS201",
+      "name": "資料結構",
+      "credits": 3,
+      "type": "required",
+      "dept": "資訊工程學系",
+      "teacherId": "U1001",
+      "room": "理工大樓 E201",
+      "schedule": [
+        {
+          "day": 1,
+          "periods": [
+            3,
+            4
+          ]
+        },
+        {
+          "day": 3,
+          "periods": [
+            3,
+            4
+          ]
+        }
+      ],
+      "capacity": 60,
+      "enrolled": [
+        "S11301001",
+        "S11301002",
+        "S11301006",
+        "S11301007",
+        "S11301008",
+        "S11301012",
+        "S11301013"
+      ],
+      "description": "介紹陣列、鏈結串列、堆疊、佇列、樹與圖等資料結構，並以程式實作分析時間與空間複雜度。",
+      "color": "#2f6b9a",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "資料結構核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C002",
+      "code": "CS305",
+      "name": "資料庫系統",
+      "credits": 3,
+      "type": "required",
+      "dept": "資訊工程學系",
+      "teacherId": "U1001",
+      "room": "理工大樓 E305",
+      "schedule": [
+        {
+          "day": 2,
+          "periods": [
+            5,
+            6
+          ]
+        },
+        {
+          "day": 4,
+          "periods": [
+            5,
+            6
+          ]
+        }
+      ],
+      "capacity": 55,
+      "enrolled": [
+        "S11301001",
+        "S11301002",
+        "S11301006",
+        "S11301007",
+        "S11301008",
+        "S11301012",
+        "S11301013"
+      ],
+      "description": "關聯式資料庫理論、SQL 語言、正規化、交易處理與資料庫設計實務。",
+      "color": "#2b7a78",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "資料庫系統核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C003",
+      "code": "CS410",
+      "name": "人工智慧導論",
+      "credits": 3,
+      "type": "elective",
+      "dept": "資訊工程學系",
+      "teacherId": "U1005",
+      "room": "理工大樓 E401",
+      "schedule": [
+        {
+          "day": 3,
+          "periods": [
+            7,
+            8
+          ]
+        },
+        {
+          "day": 5,
+          "periods": [
+            3,
+            4
+          ]
+        }
+      ],
+      "capacity": 50,
+      "enrolled": [
+        "S11301001",
+        "S11301002",
+        "S11301006",
+        "S11301008",
+        "S11301013"
+      ],
+      "description": "從搜尋演算法、機器學習到深度學習，建立人工智慧的基礎觀念與應用能力。",
+      "color": "#8a5a9e",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "人工智慧導論核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C004",
+      "code": "CS220",
+      "name": "網頁程式設計",
+      "credits": 3,
+      "type": "elective",
+      "dept": "資訊工程學系",
+      "teacherId": "U1005",
+      "room": "理工大樓 E306",
+      "schedule": [
+        {
+          "day": 1,
+          "periods": [
+            7,
+            8
+          ]
+        },
+        {
+          "day": 4,
+          "periods": [
+            7,
+            8
+          ]
+        }
+      ],
+      "capacity": 50,
+      "enrolled": [
+        "S11301001",
+        "S11301002",
+        "S11301007",
+        "S11301008",
+        "S11301012",
+        "S11301013"
+      ],
+      "description": "以 HTML、CSS、JavaScript 與現代框架開發 responsive 網站，並實作 REST API 串接。",
+      "color": "#b5762c",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "網頁程式設計核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C005",
+      "code": "BA201",
+      "name": "管理學",
+      "credits": 3,
+      "type": "required",
+      "dept": "企業管理學系",
+      "teacherId": "U1002",
+      "room": "管理大樓 A201",
+      "schedule": [
+        {
+          "day": 2,
+          "periods": [
+            3,
+            4
+          ]
+        },
+        {
+          "day": 4,
+          "periods": [
+            3,
+            4
+          ]
+        }
+      ],
+      "capacity": 70,
+      "enrolled": [
+        "S11302003",
+        "S11302009",
+        "S11303004"
+      ],
+      "description": "介紹規劃、組織、領導與控制四大管理功能，並以金門在地企業案例進行討論。",
+      "color": "#b5762c",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "管理學核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C006",
+      "code": "BA310",
+      "name": "行銷管理",
+      "credits": 3,
+      "type": "elective",
+      "dept": "企業管理學系",
+      "teacherId": "U1002",
+      "room": "管理大樓 A303",
+      "schedule": [
+        {
+          "day": 3,
+          "periods": [
+            5,
+            6
+          ]
+        }
+      ],
+      "capacity": 55,
+      "enrolled": [
+        "S11302003",
+        "S11302009",
+        "S11303004"
+      ],
+      "description": "市場區隔、目標市場選擇、品牌定位與數位行銷策略的理論與實務。",
+      "color": "#8a5a9e",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "行銷管理核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C007",
+      "code": "TM101",
+      "name": "觀光學概論",
+      "credits": 3,
+      "type": "required",
+      "dept": "觀光管理學系",
+      "teacherId": "U1003",
+      "room": "管理大樓 B201",
+      "schedule": [
+        {
+          "day": 1,
+          "periods": [
+            5,
+            6
+          ]
+        }
+      ],
+      "capacity": 65,
+      "enrolled": [
+        "S11303004",
+        "S11302009"
+      ],
+      "description": "觀光產業結構、旅遊行為、目的地管理與金門觀光資源的個案分析。",
+      "color": "#2b7a78",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "觀光學概論核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C008",
+      "code": "TM220",
+      "name": "旅館管理",
+      "credits": 3,
+      "type": "elective",
+      "dept": "觀光管理學系",
+      "teacherId": "U1003",
+      "room": "管理大樓 B305",
+      "schedule": [
+        {
+          "day": 2,
+          "periods": [
+            7,
+            8
+          ]
+        }
+      ],
+      "capacity": 45,
+      "enrolled": [
+        "S11303004",
+        "S11302009"
+      ],
+      "description": "旅館營運管理、客房與餐飲服務流程、服務品質與顧客關係管理。",
+      "color": "#b0506e",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "旅館管理核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C009",
+      "code": "NR210",
+      "name": "基本護理學",
+      "credits": 3,
+      "type": "required",
+      "dept": "護理學系",
+      "teacherId": "U1004",
+      "room": "健康大樓 C301",
+      "schedule": [
+        {
+          "day": 3,
+          "periods": [
+            1,
+            2
+          ]
+        },
+        {
+          "day": 5,
+          "periods": [
+            1,
+            2
+          ]
+        }
+      ],
+      "capacity": 50,
+      "enrolled": [
+        "S11204005",
+        "S11204011"
+      ],
+      "description": "護理專業核心概念、護理過程、基本技術與臨床案例演練。",
+      "color": "#b0506e",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "基本護理學核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C010",
+      "code": "NR320",
+      "name": "社區護理學",
+      "credits": 2,
+      "type": "elective",
+      "dept": "護理學系",
+      "teacherId": "U1004",
+      "room": "健康大樓 C302",
+      "schedule": [
+        {
+          "day": 4,
+          "periods": [
+            1,
+            2
+          ]
+        }
+      ],
+      "capacity": 45,
+      "enrolled": [
+        "S11204005",
+        "S11204011"
+      ],
+      "description": "以社區為基礎的健康照護、健康促進、弱勢族群關懷與在地健康營造。",
+      "color": "#6b7a3a",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "社區護理學核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C011",
+      "code": "GE101",
+      "name": "大學國文",
+      "credits": 2,
+      "type": "required",
+      "dept": "通識教育中心",
+      "teacherId": "U1006",
+      "room": "人文大樓 H101",
+      "schedule": [
+        {
+          "day": 1,
+          "periods": [
+            1,
+            2
+          ]
+        }
+      ],
+      "capacity": 80,
+      "enrolled": [
+        "S11301001",
+        "S11301002",
+        "S11303004",
+        "S11204005"
+      ],
+      "description": "透過經典閱讀與書寫練習，培養語文表達、批判思考與人文關懷。",
+      "color": "#6b7a3a",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "大學國文核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C012",
+      "code": "GE205",
+      "name": "資訊素養與倫理",
+      "credits": 2,
+      "type": "elective",
+      "dept": "通識教育中心",
+      "teacherId": "U1007",
+      "room": "綜合大樓 R201",
+      "schedule": [
+        {
+          "day": 2,
+          "periods": [
+            1,
+            2
+          ]
+        }
+      ],
+      "capacity": 90,
+      "enrolled": [
+        "S11301001",
+        "S11302003",
+        "S11204005"
+      ],
+      "description": "資訊倫理、著作權、假訊息識讀、資料隱私與 AI 工具的正確使用。",
+      "color": "#5a6b8a",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "資訊素養與倫理核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C013",
+      "code": "PE101",
+      "name": "體育（羽球）",
+      "credits": 1,
+      "type": "required",
+      "dept": "體育室",
+      "teacherId": "U1008",
+      "room": "體育館 G201",
+      "schedule": [
+        {
+          "day": 5,
+          "periods": [
+            5,
+            6
+          ]
+        }
+      ],
+      "capacity": 40,
+      "enrolled": [
+        "S11301002",
+        "S11302003",
+        "S11303004",
+        "S11204005"
+      ],
+      "description": "羽球基本動作、規則、雙打戰術與運動安全觀念。",
+      "color": "#3f7a55",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "體育（羽球）核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    },
+    {
+      "id": "C014",
+      "code": "CS330",
+      "name": "專題製作（一）",
+      "credits": 2,
+      "type": "required",
+      "dept": "資訊工程學系",
+      "teacherId": "U1001",
+      "room": "理工大樓 E402",
+      "schedule": [
+        {
+          "day": 5,
+          "periods": [
+            7,
+            8
+          ]
+        }
+      ],
+      "capacity": 30,
+      "enrolled": [
+        "S11301002",
+        "S11301006",
+        "S11301007",
+        "S11301008",
+        "S11301012"
+      ],
+      "description": "以團隊方式完成資訊系統專題，從需求訪談、系統設計到雛型實作與成果發表。",
+      "color": "#123a63",
+      "semester": "115-1",
+      "syllabus": [
+        {
+          "week": "第 1–2 週",
+          "topic": "課程導論、評量方式與學習目標"
+        },
+        {
+          "week": "第 3–6 週",
+          "topic": "專題製作（一）核心概念與基礎應用"
+        },
+        {
+          "week": "第 7–9 週",
+          "topic": "期中評量、案例討論與實作檢討"
+        },
+        {
+          "week": "第 10–14 週",
+          "topic": "進階主題、分組專題與同儕回饋"
+        },
+        {
+          "week": "第 15–18 週",
+          "topic": "期末成果發表、課程總結與反思"
+        }
+      ]
+    }
+  ],
+  "grades": [
+    {
+      "id": "G001",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-1",
+      "courseName": "計算機概論",
+      "credits": 3,
+      "category": "系必修",
+      "score": 88,
+      "teacherName": "校務系統匯入"
+    },
+    {
+      "id": "G002",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-1",
+      "courseName": "微積分（一）",
+      "credits": 3,
+      "category": "系必修",
+      "score": 76,
+      "teacherName": "校務系統匯入"
+    },
+    {
+      "id": "G003",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-1",
+      "courseName": "英文（一）",
+      "credits": 2,
+      "category": "通識",
+      "score": 85,
+      "teacherName": "校務系統匯入"
+    },
+    {
+      "id": "G004",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-1",
+      "courseName": "體育（一）",
+      "credits": 1,
+      "category": "體育",
+      "score": 90,
+      "teacherName": "校務系統匯入"
+    },
+    {
+      "id": "G005",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-1",
+      "courseName": "程式設計實習",
+      "credits": 2,
+      "category": "系必修",
+      "score": 92,
+      "teacherName": "校務系統匯入"
+    },
+    {
+      "id": "G006",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-2",
+      "courseName": "物件導向程式設計",
+      "credits": 3,
+      "category": "系必修",
+      "score": 89,
+      "teacherName": "校務系統匯入"
+    },
+    {
+      "id": "G007",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-2",
+      "courseName": "線性代數",
+      "credits": 3,
+      "category": "系必修",
+      "score": 71,
+      "teacherName": "校務系統匯入"
+    },
+    {
+      "id": "G008",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-2",
+      "courseName": "離散數學",
+      "credits": 3,
+      "category": "系必修",
+      "score": 83,
+      "teacherName": "校務系統匯入"
+    },
+    {
+      "id": "G009",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-2",
+      "courseName": "英文（二）",
+      "credits": 2,
+      "category": "通識",
+      "score": 79,
+      "teacherName": "校務系統匯入"
+    },
+    {
+      "id": "G010",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-2",
+      "courseName": "體育（二）",
+      "credits": 1,
+      "category": "體育",
+      "score": 88,
+      "teacherName": "校務系統匯入"
+    },
+    {
+      "id": "G011",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-2",
+      "courseName": "網頁設計",
+      "credits": 2,
+      "category": "系選修",
+      "score": 94,
+      "teacherName": "校務系統匯入"
+    },
+    {
+      "id": "G012",
+      "studentId": "S11301001",
+      "courseId": null,
+      "semester": "114-2",
+      "courseName": "服務學習",
+      "credits": 1,
+      "category": "通識",
+      "score": 85,
+      "teacherName": "校務系統匯入"
+    }
+  ],
+  "courseGrades": [
+    {
+      "courseId": "C001",
+      "studentId": "S11301001",
+      "regular": 88,
+      "midterm": 82,
+      "final": null,
+      "updatedAt": "2026-10-31T02:14:42.514Z"
+    },
+    {
+      "courseId": "C001",
+      "studentId": "S11301002",
+      "regular": 91,
+      "midterm": 76,
+      "final": null,
+      "updatedAt": "2026-10-31T02:14:42.515Z"
+    },
+    {
+      "courseId": "C001",
+      "studentId": "S11301006",
+      "regular": 79,
+      "midterm": 68,
+      "final": null,
+      "updatedAt": "2026-10-31T02:14:42.515Z"
+    },
+    {
+      "courseId": "C001",
+      "studentId": "S11301007",
+      "regular": 85,
+      "midterm": 80,
+      "final": null,
+      "updatedAt": "2026-10-31T02:14:42.515Z"
+    },
+    {
+      "courseId": "C001",
+      "studentId": "S11301008",
+      "regular": 72,
+      "midterm": 55,
+      "final": 0,
+      "updatedAt": "2026-10-31T02:14:42.515Z"
+    },
+    {
+      "courseId": "C001",
+      "studentId": "S11301012",
+      "regular": 93,
+      "midterm": 89,
+      "final": null,
+      "updatedAt": "2026-10-31T02:14:42.515Z"
+    },
+    {
+      "courseId": "C001",
+      "studentId": "S11301013",
+      "regular": 86,
+      "midterm": 77,
+      "final": null,
+      "updatedAt": "2026-10-31T02:14:42.515Z"
+    },
+    {
+      "courseId": "C002",
+      "studentId": "S11301001",
+      "regular": 90,
+      "midterm": 85,
+      "final": null,
+      "updatedAt": "2026-10-31T02:14:42.515Z"
+    },
+    {
+      "courseId": "C002",
+      "studentId": "S11301002",
+      "regular": 84,
+      "midterm": 79,
+      "final": null,
+      "updatedAt": "2026-10-31T02:14:42.515Z"
+    },
+    {
+      "courseId": "C003",
+      "studentId": "S11301001",
+      "regular": 92,
+      "midterm": 87,
+      "final": null,
+      "updatedAt": "2026-10-31T02:14:42.515Z"
+    },
+    {
+      "courseId": "C004",
+      "studentId": "S11301001",
+      "regular": 95,
+      "midterm": 91,
+      "final": null,
+      "updatedAt": "2026-10-31T02:14:42.515Z"
+    }
+  ],
+  "leaves": [
+    {
+      "id": "L001",
+      "studentId": "S11301001",
+      "courseId": "C002",
+      "type": "病假",
+      "startDate": "2026-10-25",
+      "endDate": "2026-10-25",
+      "reason": "因急性腸胃炎至金門醫院就診，附上診斷證明，申請病假一日。",
+      "status": "approved",
+      "createdAt": "2026-10-24T02:14:42.515Z",
+      "reviewer": "林美華",
+      "reviewNote": "已核對診斷證明，准假。"
+    },
+    {
+      "id": "L002",
+      "studentId": "S11301001",
+      "courseId": "C001",
+      "type": "事假",
+      "startDate": "2026-11-09",
+      "endDate": "2026-11-09",
+      "reason": "需返台陪同家人進行門診手術，申請事假一日。",
+      "status": "pending",
+      "createdAt": "2026-11-05T02:14:42.515Z",
+      "reviewer": null,
+      "reviewNote": ""
+    },
+    {
+      "id": "L003",
+      "studentId": "S11301002",
+      "courseId": "C004",
+      "type": "公假",
+      "startDate": "2026-11-02",
+      "endDate": "2026-11-03",
+      "reason": "代表學校參加全國大專院校程式設計競賽。",
+      "status": "pending",
+      "createdAt": "2026-11-03T02:14:42.515Z",
+      "reviewer": null,
+      "reviewNote": ""
+    }
+  ],
+  "announcements": [
+    {
+      "id": "A001",
+      "title": "115學年度第1學期期中考週注意事項",
+      "category": "教務處",
+      "body": "期中考週將於第 9 週舉行，請同學依授課教師公告之考試時間與地點應試。\n\n一、考試期間請攜帶學生證，並放置於桌面左上角備查。\n二、因病無法應試者，請於考試前完成請假手續，並於一週內補繳證明。\n三、各科考試範圍與評量方式請洽授課教師或查閱課程大綱。\n\n教務處 敬啟",
+      "authorId": "U9001",
+      "pinned": true,
+      "audience": "all",
+      "createdAt": "2026-11-04T02:14:42.515Z"
+    },
+    {
+      "id": "A002",
+      "title": "圖書館期中考週延長開放時間",
+      "category": "圖書館",
+      "body": "為因應期中考試需求，圖書館自 11 月 9 日至 11 月 20 日延長開放至晚間 11 時。\n\n2 樓自習室維持 24 小時開放，請同學共同維護閱覽品質，並隨身保管貴重物品。",
+      "authorId": "U9001",
+      "pinned": false,
+      "audience": "all",
+      "createdAt": "2026-11-02T02:14:42.515Z"
+    },
+    {
+      "id": "A003",
+      "title": "114學年度第2學期書卷獎獲獎名單公告",
+      "category": "學務處",
+      "body": "114 學年度第 2 學期書卷獎獲獎名單已公告於學務處網頁，請獲獎同學於 11 月 30 日前至學務處簽領獎狀。\n\n如有疑義，請於公告日起 7 日內提出複查申請。",
+      "authorId": "U9001",
+      "pinned": false,
+      "audience": "all",
+      "createdAt": "2026-10-31T02:14:42.515Z"
+    },
+    {
+      "id": "A004",
+      "title": "校園無線網路設備維護通知",
+      "category": "資訊處",
+      "body": "資訊處將於本週日 08:00–12:00 進行無線網路控制器維護，維護期間圖資大樓與管理大樓可能發生短暫斷線。\n\n造成不便，敬請見諒。",
+      "authorId": "U9001",
+      "pinned": false,
+      "audience": "all",
+      "createdAt": "2026-10-29T02:14:42.515Z"
+    },
+    {
+      "id": "A005",
+      "title": "金門大學校園馬拉松志工招募",
+      "category": "學務處",
+      "body": "一年一度的金門大學校園馬拉松即將登場！即日起招募活動志工 30 名，提供服務時數與餐盒。\n\n報名請洽學務處課外活動組，額滿為止。",
+      "authorId": "U9001",
+      "pinned": false,
+      "audience": "all",
+      "createdAt": "2026-10-27T02:14:42.515Z"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "name": "系必修",
+      "required": 60
+    },
+    {
+      "id": "R2",
+      "name": "系選修",
+      "required": 24
+    },
+    {
+      "id": "R3",
+      "name": "通識",
+      "required": 28
+    },
+    {
+      "id": "R4",
+      "name": "體育",
+      "required": 4
+    },
+    {
+      "id": "R5",
+      "name": "自由選修",
+      "required": 12
+    }
+  ],
+  "counters": {
+    "announcement": 6,
+    "leave": 4,
+    "grade": 13
+  },
+  "createdAt": "2026-11-06T02:14:42.517Z"
+}
