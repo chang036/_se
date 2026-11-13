@@ -1,0 +1,37 @@
+{
+  "name": "cfquick",
+  "version": "1.0.0",
+  "description": "A zero-dependency CLI for quick Cloudflare API tasks: whoami, list zones, list DNS records, purge cache.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "cfquick": "bin/cfquick.js"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "cloudflare",
+    "cli",
+    "api",
+    "dns",
+    "cache",
+    "purge",
+    "zones",
+    "cdn"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chang036/cfquick.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chang036/cfquick/issues"
+  },
+  "homepage": "https://github.com/chang036/cfquick#readme"
+}
